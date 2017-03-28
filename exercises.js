@@ -3,9 +3,16 @@
 //Do not change any of the function names
 
 function multiplyArguments() {
-	//use the arguments keyword to multiply all of the arguments together and return the product
-	//if no arguments are passed in return 0
-	//if one argument is passed in just return it
+	var result = 1;
+
+	if (arguments.length === 0) return 0;
+	else if (arguments.length === 1) return arguments[0];
+
+	for (var i = 0; i < arguments.length; i++) {
+		result *= arguments[i];
+	}
+
+	return result;
 }
 
 function invokeCallback(cb) {
@@ -13,6 +20,9 @@ function invokeCallback(cb) {
 }
 
 function sumArray(numbers, cb) {
+	cb(numbers.reduce(function(acc, val) {
+		return acc + val;
+	}));
 	//sum up all of the integers in the numbers array
 	//pass the result to cb
 	//no return is necessary
