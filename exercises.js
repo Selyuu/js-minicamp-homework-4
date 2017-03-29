@@ -40,18 +40,16 @@ function map(arr, cb) {
 }
 
 function getUserConstructor() {
-	return User = {
-		username: this.username,
-		name: this.name,
-		email: this.email,
-		password: this.password
-	};
-	//create a constructor called User
-	//it should accept an options object with username, name, email, and password properties
-	//in the constructor set the username, name, email, and password properties
-	//the constructor should have a method 'sayHi' on its prototype that returns the string 'Hello, my name is {{name}}'
-	//{{name}} should be the name set on each instance
-	//return the constructor
+	function User(options) {
+		this.username = options.username;
+		this.name = options.name;
+		this.email = options.email;
+		this.password = options.password;
+		this.sayHi = function() {
+			return 'Hello, my name is ' + this.name;
+		};
+	}
+	return User;
 }
 
 function addPrototypeMethod(Constructor) {
