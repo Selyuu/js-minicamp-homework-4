@@ -16,6 +16,7 @@ function multiplyArguments() {
 }
 
 function invokeCallback(cb) {
+	cb();
 	//invoke cb
 }
 
@@ -23,23 +24,28 @@ function sumArray(numbers, cb) {
 	cb(numbers.reduce(function(acc, val) {
 		return acc + val;
 	}));
-	//sum up all of the integers in the numbers array
-	//pass the result to cb
-	//no return is necessary
 }
 
 function forEach(arr, cb) {
-	//iterate over arr and pass its values to cb one by one
-	//hint: you will be invoking cb multiple times (once for each value in the array)
+	arr.forEach(function(currentVal) {
+		cb(currentVal);
+	});
 }
 
 function map(arr, cb) {
-	//create a new array
-	//iterate over each value in arr, pass it to cb, then place the value returned from cb into the new arr
-	//the new array should be the same length as the array argument
+	var newArr = arr.map(function(num) {
+		return cb(num);
+	});
+	return newArr;
 }
 
 function getUserConstructor() {
+	return User = {
+		username: this.username,
+		name: this.name,
+		email: this.email,
+		password: this.password
+	};
 	//create a constructor called User
 	//it should accept an options object with username, name, email, and password properties
 	//in the constructor set the username, name, email, and password properties
